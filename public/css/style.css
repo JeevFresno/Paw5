@@ -1,11 +1,16 @@
 body {
-    font-family: 'Sansita',sans-serif, Helvetica, Arial;
+    font-family: Helvetica, Arial;
     color:#000;
     font-size:12px;
     font-size:1.2rem;
 }
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Fjalla One', sans-serif, Helvetica, Arial;
+   /* font-family: 'Fjalla One', sans-serif, Helvetica, Arial;
+   font-family: 'Sansita',sans-serif, Helvetica, Arial;*/
+}
+a:active, a:focus, a:hover {
+    outline:none;
+    text-decoration: none;
 }
 /* Heading */
 .primary-heading {
@@ -23,6 +28,14 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0;
     margin: 0 0 22px;
     position: relative;
+}
+.heading-sm {
+    font-size:18px;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+.modal-title {
+    color:#005685;
 }
 .heading-bar span {
     background: #005685;
@@ -80,11 +93,18 @@ h1, h2, h3, h4, h5, h6 {
 /* Navigation*/
 .main-nav li a {
     color:#fff;
+    font-size: 14px;
+    font-size: 1.4rem;
+}
+.main-nav li a:hover, .main-nav li a:focus {
+    background-color: #fff;
+    color: #005685;
 }
 .fixed {
     position: fixed;
     top:0;
     z-index: 2;
+    opacity: 1;
 }
 /* Parallax */
 .parallax {
@@ -206,6 +226,12 @@ h1, h2, h3, h4, h5, h6 {
 .sp_tp_50 {
     margin-top: 50px;
 }
+.sp_tp_0{
+    margin-top: 0!important;
+}
+.sp_tp_15 {
+    margin-top: 15px;
+}
 .sp_bt_25 {
     margin-bottom: 25px;
 }
@@ -216,6 +242,10 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 0 !important;
 }
 /* Forms Styles*/
+.form-custom {
+    font-size: 14px;
+    font-size: 1.4rem;
+}
 .form-custom label {
     display: block;
     max-width: 100%;
@@ -256,6 +286,11 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: none;
     width:auto;
 }
+.form-custom input[type=file] {
+    border: none;
+    box-shadow: none;
+    padding-left: 0;
+}
 .custom-border {
     border: 1px solid #ccc;
     box-shadow: 1px 5px 5px rgba(0,0,0,.075);
@@ -273,10 +308,15 @@ h1, h2, h3, h4, h5, h6 {
     color: #93c4ea;
     border: 1px solid #93c4ea;
 }
-.button-blue, .button-dkblue {
+.button-blue, .button-dkblue,.button-dkbluebg {
     background-color: transparent;
     cursor: pointer;
     margin-top: 15px;
+    display: inline-block;
+}
+.button-dkbluebg {
+    background-color: #005685;
+    color:#fff;
 }
 .button-dkblue {
     color: #005685;
@@ -316,13 +356,39 @@ h1, h2, h3, h4, h5, h6 {
 .bar {
     color:#ccc;
 }
+.footer {
+    padding: 10px 0;
+    background-color: #4c4c4c;
+}
+.footer p {
+    color:#fff;
+    margin-bottom: 0;
+}
+.btn-default {
+    background-image: none;
+    text-shadow: none;
+}
+.listing-item:first-child {
+    margin-top: 0;
+}
+.listing-item {
+    margin-top: 20px;
+}
+.media-subheading {
+    font-size: 14px;
+    font-size: 1.4rem;
+}
+.media-body a{
+    font-size: 13px;
+    font-size: 1.3rem;
+}
 /* Media Queries */
 @media (min-width: 992px) {
     .container {
         width: 970px;
     }
     .custom-width {
-        width:700px;
+        width:800px;
     }
 }
 
