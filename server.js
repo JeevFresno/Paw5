@@ -57,7 +57,7 @@ function loadProfile(){
 app.get('/login',function(req,res){
 
     var fresnostateemail = req.query.email;
-    var pass    = req.query.email;
+    var pass    = req.query.pwd;
     var query ="SELECT * from user where email = ? and password = ?";
     connection.query(query,[fresnostateemail,pass],function(err,rows,field){
         if(!err){

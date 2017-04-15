@@ -272,9 +272,23 @@ h1, h2, h3, h4, h5, h6 {
 .button-blue {
     color: #93c4ea;
     border: 1px solid #93c4ea;
+}
+.button-blue, .button-dkblue {
     background-color: transparent;
     cursor: pointer;
     margin-top: 15px;
+}
+.button-dkblue {
+    color: #005685;
+    border: 3px solid #005685;
+    line-height: 18px;
+}
+.form-group input[type=search] {
+    width: 82%;
+    display: inline-block;
+    margin-right: 10px;
+    border-radius: 0;
+    border: 3px solid #005685;
 }
 .button-white {
     color: #fff;
@@ -294,8 +308,13 @@ h1, h2, h3, h4, h5, h6 {
     color: #93c4ea;
     text-decoration: none;
 }
-.button-default {
-
+.media-object {
+    height: 150px;
+    border:1px solid #ccc;
+    padding: 3px;
+}
+.bar {
+    color:#ccc;
 }
 /* Media Queries */
 @media (min-width: 992px) {
@@ -306,4 +325,5 @@ h1, h2, h3, h4, h5, h6 {
         width:700px;
     }
 }
+
 
