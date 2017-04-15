@@ -37,9 +37,9 @@ connection.end();
 
 var app = express();
 console.log(__dirname);
-//app.use('/', express.static(__dirname + '/public/html/index.html'));
 
-app.use('/', express.static(__dirname + '/public/html/'));
+
+app.use('/', express.static(__dirname + '/public/'));
 /*app.get('/',function(req,res){
     res.send('Hello World');
 })*/
