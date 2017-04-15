@@ -203,6 +203,7 @@ app.get('/sendEmail',function(req,res){
         }
         console.log('Message %s sent: %s', info.messageId, info.response);
         console.sent('success');
+        res.sent('success');
 });
 });
 
@@ -224,6 +225,7 @@ app.get('/sentText',function(req,res){
         } else {
             console.log('sendtext');
             console.log(message.sid);
+            res.send('success');
         }
     });
 });

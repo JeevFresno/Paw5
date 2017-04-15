@@ -1,5 +1,11 @@
 $(document ).ready(function() {
 
+    if(sessionStorage.email == null || sessionStorage.email == "undefined"){
+
+        $('#prf').hide();
+    }else{
+        $('#prf').show();
+    }
    $("#btnLogin" ).click(function(e) {
        e.preventDefault();
        //alert('Login Function')
