@@ -133,11 +133,11 @@ app.get('/uploadBooks',function(req,res){
     var pub = req.query.publisher;
     var prc = req.query.price;
     var imgUrl = req.query.imageUrl;
-    var wish = req.query.wishlist;
+    //var wish = req.query.wishlist;
     var is = req.query.isbn;
     var query ="INSERT INTO upload SET ?";
 
-    connection.query(query,{bookname:bk,author:auth,email:em,publisher:pub,price:prc,imageUrl:imgUrl,wishlist:wish,ISBN:is},function(err,rows,field){
+    connection.query(query,{bookname:bk,author:auth,email:em,publisher:pub,price:prc,imagUrl:imgUrl,ISBN:is},function(err,rows,field){
         if(!err){
             console.log('Data uploaded');
             res.send('success');
@@ -155,19 +155,19 @@ app.get('/uploadBooks',function(req,res){
 
 app.get('/searchDatabase',function(req,res){
     console.log('i am here');
-    //var searchText = req.query.searchText;
-    searchText='database';
+    var searchText = req.query.searchText;
+    //searchText='database';
     var query1="Select * from upload where MATCH(bookname,description) AGAINST ('"+ searchText+"' IN NATURAL LANGUAGE MODE)"
     connection.query(query1,function(err,rows,field){
         if(!err){
 
             console.log(rows);
-            if(rows.length==0){
+           /* if(rows.length==0){
                 var query2 ="";
                 connection.query(query2,function(err,rows,field){
 
                 });
-            }
+            }*/
             res.send(rows);
         }else{
             console.log(err.stack);

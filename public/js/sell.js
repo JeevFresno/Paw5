@@ -22,7 +22,7 @@ $(document).ready(function(){
 
     $("#btnClose").click(function(){
        var price =$("#modalText").val;
-       var queryS ="";
+       var queryS ={};
         queryS.bookname=selectedItem.volumeInfo.title;
      queryS.author=selectedItem.volumeInfo.authors;
      queryS.email=sessionStorage.email;
@@ -31,6 +31,7 @@ $(document).ready(function(){
     queryS.imageUrl=selectedItem.volumeInfo.imageLinks.smallThumbnail;
  
     queryS.isbn=selectedItem.volumeInfo.industryIdentifiers[0].identifier;
+    console.log(queryS);
     $.get('/uploadBooks',queryS,function(data){
     alert(data);
    })
