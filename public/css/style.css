@@ -10,6 +10,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 a:active, a:focus, a:hover {
     outline:none;
+    text-decoration: none;
 }
 /* Heading */
 .primary-heading {
@@ -307,11 +308,15 @@ a:active, a:focus, a:hover {
     color: #93c4ea;
     border: 1px solid #93c4ea;
 }
-.button-blue, .button-dkblue {
+.button-blue, .button-dkblue,.button-dkbluebg {
     background-color: transparent;
     cursor: pointer;
     margin-top: 15px;
     display: inline-block;
+}
+.button-dkbluebg {
+    background-color: #005685;
+    color:#fff;
 }
 .button-dkblue {
     color: #005685;
