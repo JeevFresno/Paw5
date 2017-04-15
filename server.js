@@ -176,8 +176,12 @@ app.get('/searchDatabase',function(req,res){
 
 });
 
-app.get('/sendEmail',function(){
+//Sending the EMAIL
+app.get('/sendEmail',function(req,res){
     "use strict";
+    var Sender_email = req.body.Semail;
+    var Rec_email = req.body.Remail;
+
     // Use Smtp Protocol to send Email
     const nodemailer = require('nodemailer');
 
@@ -192,8 +196,8 @@ app.get('/sendEmail',function(){
 
 // setup email data with unicode symbols
     let mailOptions = {
-        from: '"Jeevjyot singh Chhabda" <jeevjyotchhabda@gmail.com>', // sender address
-        to: 'aradhanaelisa@mail.fresnostate.edu, flossymascarenhas@gmail.com', // list of receivers
+        from: '"Jeevjyot singh Chhabda" <'+ Sender_email +'>', // sender address
+        to: Rec_email, // list of receivers
         subject: 'Hello', // Subject line
         text: 'Hello world ?', // plain text body
         html: '<b>Hello world ?</b>' // html body
@@ -211,14 +215,15 @@ app.get('/sendEmail',function(){
 /*
  +++++++++++++++++ Sending the text ++++++++++++++++++
  */
-
 app.get('/sentText',function(req,res){
     console.log('sending message');
 
+    var phoneNum= req.query.ph;
+    var body = req.query.textBody;
     client.messages.create({
-        to: "+14243338972",
+        to: phoneNum,
         from: "+16789229254",
-        body: "I am interested in the book, please get back to me at jj@jj.com"
+        body: body
     }, function(err, message) {
         if(err){
             console.log(err);
@@ -229,7 +234,6 @@ app.get('/sentText',function(req,res){
 });
 
 //fetching the profile information
-
 app.get('/profile',function(req,res){
     var email = req.query.email;
 
@@ -240,9 +244,24 @@ app.get('/profile',function(req,res){
         }else{
             console.log('err');
         }
-    })
+    });
 });
 
+//fetching the uploaded books
+app.get('/getUploadedBooksByEmail',function(req,res){
+
+    var email = req.query.email;
+
+    var query = "SELECT * from upload where email = ?";
+    connection.query(query,[email],function(rows,fields,err){
+        if(!err){
+            res.send(rows);
+        }else{
+            console.log('err');
+        }
+    });
+
+})
 /// Fetching the 3 latest record
 app.get('/latest3',function(req,res){
 
@@ -250,7 +269,7 @@ app.get('/latest3',function(req,res){
     FROM Test_Most_Recent
     WHERE Date in ( SELECT MAX(Date) from Test_Most_Recent group by User)*/
 
-    var query ="SELECT bookname,author,email,publisher,ISBN,imageUrl,description,timestamp from upload where timestamp in (SELECT MAX(timestamp) from upload group by bookname";
+    var query ="SELECT bookname,author,price,email,publisher,ISBN,imageUrl,description,timestamp from upload where timestamp in (SELECT MAX(timestamp) from upload group by bookname";
 
     connection.query(query,function(err,rows,field){
 
