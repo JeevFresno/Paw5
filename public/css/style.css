@@ -5,8 +5,8 @@ body {
     font-size:1.2rem;
 }
 h1, h2, h3, h4, h5, h6 {
-   /* font-family: 'Fjalla One', sans-serif, Helvetica, Arial;*/
-   font-family: 'Sansita',sans-serif, Helvetica, Arial;
+   /* font-family: 'Fjalla One', sans-serif, Helvetica, Arial;
+   font-family: 'Sansita',sans-serif, Helvetica, Arial;*/
 }
 a:active, a:focus, a:hover {
     outline:none;
@@ -27,6 +27,11 @@ a:active, a:focus, a:hover {
     padding: 0;
     margin: 0 0 22px;
     position: relative;
+}
+.heading-sm {
+    font-size:18px;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
 }
 .modal-title {
     color:#005685;
@@ -87,6 +92,8 @@ a:active, a:focus, a:hover {
 /* Navigation*/
 .main-nav li a {
     color:#fff;
+    font-size: 14px;
+    font-size: 1.4rem;
 }
 .main-nav li a:hover, .main-nav li a:focus {
     background-color: #fff;
@@ -218,6 +225,9 @@ a:active, a:focus, a:hover {
 .sp_tp_50 {
     margin-top: 50px;
 }
+.sp_tp_0{
+    margin-top: 0!important;
+}
 .sp_tp_15 {
     margin-top: 15px;
 }
@@ -231,6 +241,10 @@ a:active, a:focus, a:hover {
     padding-left: 0 !important;
 }
 /* Forms Styles*/
+.form-custom {
+    font-size: 14px;
+    font-size: 1.4rem;
+}
 .form-custom label {
     display: block;
     max-width: 100%;
@@ -270,6 +284,11 @@ a:active, a:focus, a:hover {
     height:auto;
     box-shadow: none;
     width:auto;
+}
+.form-custom input[type=file] {
+    border: none;
+    box-shadow: none;
+    padding-left: 0;
 }
 .custom-border {
     border: 1px solid #ccc;
@@ -349,6 +368,14 @@ a:active, a:focus, a:hover {
 }
 .listing-item {
     margin-top: 20px;
+}
+.media-subheading {
+    font-size: 14px;
+    font-size: 1.4rem;
+}
+.media-body a{
+    font-size: 13px;
+    font-size: 1.3rem;
 }
 /* Media Queries */
 @media (min-width: 992px) {
