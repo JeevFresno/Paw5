@@ -1,10 +1,16 @@
  $(document ).ready(function() {
 
+     alert(sessionStorage.email);
+     //Accessing the profile information
+
+
+     //Accessing
  	 $("#lstLogOut a").on('click',function(e){
-       alert("dsds");
+
      $.get('/logout',function(data){
-   	
-   })
+
+
+            });
     });
 
   /**  $.get('/booksold',function(data){

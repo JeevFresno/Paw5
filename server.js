@@ -10,6 +10,7 @@ var mailer = require("nodemailer");
 var accountSid = 'AC409154571e3ef4aec2424e58acdf9912';
 var authToken = "28301d41cc0713701a29b858037a06f6";
 var client = require('twilio')(accountSid, authToken);
+var app = express();
 //Connection Information
 var connection = mysql.createConnection({
     host     : 'bookupfresno.cwirkvfvbxk0.us-west-2.rds.amazonaws.com',
@@ -18,6 +19,10 @@ var connection = mysql.createConnection({
     database : 'bookup',
     password : 'FresnoHack17!'
 });
+app.use(sessions({
+    secret: '0GBlJZ9EKBt2Zbi2flRPvztczCewBxXK',
+    activeDuration: 30 * 60 * 1000,// active duration.
+}));
 
 connection.connect(function(err) {
     if (err) {
@@ -38,7 +43,7 @@ connection.query('select * from test',function(err,rows,field){
 })
 //connection.end();
 
-var app = express();
+
 console.log(__dirname);
 
 
@@ -56,16 +61,17 @@ function loadProfile(){
 }
 app.get('/login',function(req,res){
 
+    console.log('Performing Login');
     var fresnostateemail = req.query.email;
     var pass    = req.query.pwd;
     var query ="SELECT * from user where email = ? and password = ?";
     connection.query(query,[fresnostateemail,pass],function(err,rows,field){
         if(!err){
             if(rows.length>=1){
-                console.log('error');
+                console.log('success');
                 req.session_state.username = fresnostateemail;
-                loadProfile();
-                console.send('success');
+                //loadProfile();
+                res.send(fresnostateemail);
             }
         }else{
             res.send('error');
@@ -85,15 +91,18 @@ app.get('/register',function(req,res){
         var major = req.query.mj;
         var minor = req.query.mn;
         var password = req.query.pass;
-        //var query="INSERT INTO USER SET ?";
         var stuORpro = req.query.EndUser;
+        var phone = req.query.ph;
+        var query;
+        console.log(stuORpro);
+        console.log(phone);
         if(stuORpro == 'student'){
-            var query = "INSERT INTO user SET ?;"
+            query = "INSERT INTO user SET ?;"
         }else{
-            var query ="INSERT INTO professor SET ?;"
+            query ="INSERT INTO professor SET ?;"
         }
-        connection.query(query,{firstname:firstname,lastname:lastname,email:email,major:major,minor:minor,password:password,timestamp: new Date()},function(req,res){
-
+        console.log(query);
+        connection.query(query,{phoneNumber:phone,firstname:firstname,lastname:lastname,email:email,major:major,minor:minor,password:password,timestamp: new Date()},function(err,rows,field){
                 if(!err){
                     res.send('success');
                 }else{
@@ -219,7 +228,41 @@ app.get('/sentText',function(req,res){
     });
 });
 
+//fetching the profile information
 
+app.get('/profile',function(req,res){
+    var email = req.query.email;
+
+    var query="SELECT * from user where email = ?";
+    connection.query(query,[email],function(rows,fields,err){
+        if(!err){
+            res.send(rows);
+        }else{
+            console.log('err');
+        }
+    })
+});
+
+/// Fetching the 3 latest record
+app.get('/latest3',function(req,res){
+
+    /*SELECT Date, User, Status, Notes
+    FROM Test_Most_Recent
+    WHERE Date in ( SELECT MAX(Date) from Test_Most_Recent group by User)*/
+
+    var query ="SELECT bookname,author,email,publisher,ISBN,imageUrl,description,timestamp from upload where timestamp in (SELECT MAX(timestamp) from upload group by bookname";
+
+    connection.query(query,function(err,rows,field){
+
+        if(!err){
+            res.send(rows);
+        }else{
+            console.log(err.stack);
+            res.send('error');
+        }
+    });
+
+});
 var port = process.env.PORT || 3000;
 var server = app.listen(port,function(req,res){
     console.log('Hello World');

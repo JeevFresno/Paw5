@@ -1,5 +1,8 @@
 $(document ).ready(function() {
-   $("#btnLogin" ).click(function() {
+
+   $("#btnLogin" ).click(function(e) {
+       e.preventDefault();
+       alert('Login Function')
    	var userLogin ={};
    userLogin.email= $("#emailLogin").val();
    userLogin.pwd = $("#pwdLogin").val();
@@ -7,13 +10,18 @@ $(document ).ready(function() {
    console.log(userLogin);
 
    $.get('/login',userLogin,function(data){
-   	alert(data);
-   })
+   	if(data !=null){
+   	    //alert('login Successful');
+   	    //window.location='/';
+        alert(data);
+        sessionStorage.setItem('email',data);
+        window.location='/';
 
+    }else{
+   	    alert('login failed');
+    }
+   });
 
-    $.get('/logout',userLogin,function(data){
-   	alert(data);
-   })
 
    /* $.ajax({
  
