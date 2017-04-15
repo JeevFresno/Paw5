@@ -9,6 +9,12 @@ $(document ).ready(function() {
    $.get('/login',userLogin,function(data){
    	alert(data);
    })
+
+
+    $.get('/logout',userLogin,function(data){
+   	alert(data);
+   })
+
    /* $.ajax({
  
     url: "/login",

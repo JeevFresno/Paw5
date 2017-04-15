@@ -17,7 +17,7 @@ console.log(user);
 
  $.ajax({
      url: "/register",
- data: JSON.stringify(user),
+    data: JSON.stringify(user),
      type: "GET",
      dataType : "json",
 })

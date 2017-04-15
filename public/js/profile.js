@@ -1,35 +1,19 @@
  $(document ).ready(function() {
 
- $.ajax({
-     url: "/booksold",
+ 	 $("#lstLogOut a").on('click',function(e){
+       alert("dsds");
+     $.get('/logout',function(data){
+   	
+   })
+    });
 
-     type: "GET",
-     dataType : "json",
-})
+  /**  $.get('/booksold',function(data){
+   	alert(data);
+   })
 
-  .done(function(data) { 
-    
-  })
-
-  .fail(function() {
-    alert( "Sorry, there was a problem!" );
-   
-  })
-
-
-   $.ajax({
-     url: "/bookuploaded",
-    
-     type: "GET",
-     dataType : "json",
-})
-
-  .done(function(data) { 
-    
-  })
-
-  .fail(function() {
-    alert( "Sorry, there was a problem!" );
-   
-  })
+  $.get('/bookuploaded',function(data){
+   	alert(data);
+   })
+ 
+   */
 });
