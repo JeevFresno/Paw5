@@ -28,6 +28,9 @@ a:active, a:focus, a:hover {
     margin: 0 0 22px;
     position: relative;
 }
+.modal-title {
+    color:#005685;
+}
 .heading-bar span {
     background: #005685;
     width: 30px;
@@ -336,6 +339,16 @@ a:active, a:focus, a:hover {
 .footer p {
     color:#fff;
     margin-bottom: 0;
+}
+.btn-default {
+    background-image: none;
+    text-shadow: none;
+}
+.listing-item:first-child {
+    margin-top: 0;
+}
+.listing-item {
+    margin-top: 20px;
 }
 /* Media Queries */
 @media (min-width: 992px) {
