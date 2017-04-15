@@ -109,6 +109,33 @@ app.get('/logout',function(req,res){
     res.send('success');
 });
 
+/*
++++++++++++++++++ Putting into Upload Table ++++++++++++++++++
+*/
+
+app.get('/uploadBooks',function(req,res){
+    console.log('Putting the information in the books upload table');
+    var bk = req.query.bookname;
+    var auth = req.query.author;
+    var em = req.query.email;
+    var pub = req.query.publisher;
+    var prc = req.query.price;
+    var imgUrl = req.query.imageUrl;
+    var wish = req.query.wishlist;
+    var is = req.query.isbn;
+    var query ="INSERT INTO upload SET ?";
+
+    connection.query(query,{bookname:bk,author:auth,email:em,publisher:pub,price:prc,imageUrl:imgUrl,wishlist:wish,ISBN:is},function(err,rows,field){
+        if(!err){
+            console.log('Data uploaded');
+            res.send('success');
+
+        }else{
+            console.log(err.stack);
+            res.send('error');
+        }
+    })
+});
 var port = process.env.PORT || 3000;
 var server = app.listen(port,function(req,res){
     console.log('Hello World');
