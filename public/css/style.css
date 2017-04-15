@@ -212,6 +212,9 @@ h1, h2, h3, h4, h5, h6 {
 .sp_rt_10 {
     margin-right: 10px;
 }
+.sp_lt_0 {
+    padding-left: 0 !important;
+}
 /* Forms Styles*/
 .form-custom label {
     display: block;
@@ -247,7 +250,7 @@ h1, h2, h3, h4, h5, h6 {
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
-.form-custom input[type=checkbox] {
+.form-custom input[type=checkbox], .form-custom input[type=radio] {
     border:none;
     height:auto;
     box-shadow: none;
