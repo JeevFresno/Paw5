@@ -6,7 +6,10 @@
 var express = require('express');
 var mysql = require('mysql');
 var sessions = require("client-sessions");
-
+var mailer = require("nodemailer");
+var accountSid = 'AC409154571e3ef4aec2424e58acdf9912';
+var authToken = "28301d41cc0713701a29b858037a06f6";
+var client = require('twilio')(accountSid, authToken);
 //Connection Information
 var connection = mysql.createConnection({
     host     : 'bookupfresno.cwirkvfvbxk0.us-west-2.rds.amazonaws.com',
@@ -163,6 +166,60 @@ app.get('/searchDatabase',function(req,res){
     })
 
 });
+
+app.get('/sendEmail',function(){
+    "use strict";
+    // Use Smtp Protocol to send Email
+    const nodemailer = require('nodemailer');
+
+// create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'sirimax0@gmail.com',
+            pass: 'YJn-crD-U4S-3EL'
+        }
+    });
+
+// setup email data with unicode symbols
+    let mailOptions = {
+        from: '"Jeevjyot singh Chhabda" <jeevjyotchhabda@gmail.com>', // sender address
+        to: 'aradhanaelisa@mail.fresnostate.edu, flossymascarenhas@gmail.com', // list of receivers
+        subject: 'Hello', // Subject line
+        text: 'Hello world ?', // plain text body
+        html: '<b>Hello world ?</b>' // html body
+    };
+
+// send mail with defined transport object
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message %s sent: %s', info.messageId, info.response);
+});
+});
+
+/*
+ +++++++++++++++++ Sending the text ++++++++++++++++++
+ */
+
+app.get('/sentText',function(req,res){
+    console.log('sending message');
+
+    client.messages.create({
+        to: "+14243338972",
+        from: "+16789229254",
+        body: "I am interested in the book, please get back to me at jj@jj.com"
+    }, function(err, message) {
+        if(err){
+            console.log(err);
+        } else {
+            console.log(message.sid);
+        }
+    });
+});
+
+
 var port = process.env.PORT || 3000;
 var server = app.listen(port,function(req,res){
     console.log('Hello World');

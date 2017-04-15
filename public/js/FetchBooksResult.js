@@ -26,4 +26,19 @@ $(document).ready(function(){
             console.log(data);
         })
     });
+
+    $('#email').click(function(e){
+        e.preventDefault();
+        $.get('/sendEmail',function(data){
+            console.log(data);
+        })
+    });
+
+    $('#message').click(function(e){
+        e.preventDefault();
+        $.get('/sentText',function(data){
+
+        })
+    })
+
 })
