@@ -4,12 +4,12 @@ $( document ).ready(function() {
 
 $( "#btnSubmit" ).click(function() {
    var user ={};
-user.fn = $('#txtFirstName').val();
-user.ln = $('#txtLastName').val();
-user.em = $('#txtEmail').val();
+user.fn = $('#fname').val();
+user.ln = $('#lname').val();
+user.em = $('#email').val();
 user.pass= $('#radio:checked').val();
-user.major = $('#txtMajor').val();
-user.EndUser =$('#txtPassword').val();
+user.major = $('#major').val();
+user.EndUser =$('#minor').val();
 });
 console.log($('#txtFirstName').val());
 });
