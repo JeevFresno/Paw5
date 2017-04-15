@@ -269,7 +269,7 @@ app.get('/latest3',function(req,res){
     FROM Test_Most_Recent
     WHERE Date in ( SELECT MAX(Date) from Test_Most_Recent group by User)*/
 
-    var query ="SELECT bookname,author,email,publisher,ISBN,imageUrl,description,timestamp from upload where timestamp in (SELECT MAX(timestamp) from upload group by bookname";
+    var query ="SELECT bookname,author,price,email,publisher,ISBN,imageUrl,description,timestamp from upload where timestamp in (SELECT MAX(timestamp) from upload group by bookname";
 
     connection.query(query,function(err,rows,field){
 
