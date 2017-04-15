@@ -1,9 +1,9 @@
  $(document ).ready(function() {
 
  	 $("#lstLogOut a").on('click',function(e){
-       alert("dsds");
+      
      $.get('/logout',function(data){
-   	
+   	 location.replace("#/index.html");
    })
     });
 
