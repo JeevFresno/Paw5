@@ -1,10 +1,25 @@
-/*$( document ).ready(function() {
+$( document ).ready(function() {
     console.log( "ready 123!" );
 
+
+$( "#btnSubmit" ).click(function() {
+   var user ={};
+user.fn = $('#txtFirstName').val();
+user.ln = $('#txtLastName').val();
+user.em = $('#txtEmail').val();
+user.pass= $('#radio:checked').val();
+user.major = $('#txtMajor').val();
+user.EndUser =$('#txtPassword').val();
+});
+console.log($('#txtFirstName').val());
+});
+
+
+/*
     $.ajax({
  
     // The URL for the request
-    url: "cvx",
+    url: "/register",
  
     // The data to send (will be converted to a query string)
     data: {
@@ -12,7 +27,7 @@
     },
  
     // Whether this is a POST or GET request
-    type: "GET",
+    type: "POST",
  
     // The type of data we expect back
     dataType : "json",
