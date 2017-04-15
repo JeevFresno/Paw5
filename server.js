@@ -160,14 +160,7 @@ app.get('/searchDatabase',function(req,res){
     var query1="Select * from upload where MATCH(bookname,description) AGAINST ('"+ searchText+"' IN NATURAL LANGUAGE MODE)"
     connection.query(query1,function(err,rows,field){
         if(!err){
-
             console.log(rows);
-           /* if(rows.length==0){
-                var query2 ="";
-                connection.query(query2,function(err,rows,field){
-
-                });
-            }*/
             res.send(rows);
         }else{
             console.log(err.stack);
@@ -179,8 +172,8 @@ app.get('/searchDatabase',function(req,res){
 //Sending the EMAIL
 app.get('/sendEmail',function(req,res){
     "use strict";
-    var Sender_email = req.body.Semail;
-    var Rec_email = req.body.Remail;
+   // var Sender_email = req.body.Semail;
+    //var Rec_email = req.body.Remail;
 
     // Use Smtp Protocol to send Email
     const nodemailer = require('nodemailer');
@@ -196,10 +189,10 @@ app.get('/sendEmail',function(req,res){
 
 // setup email data with unicode symbols
     let mailOptions = {
-        from: '"Jeevjyot singh Chhabda" <'+ Sender_email +'>', // sender address
-        to: Rec_email, // list of receivers
-        subject: 'Hello', // Subject line
-        text: 'Hello world ?', // plain text body
+        from: '"Jeevjyot singh Chhabda" <jeevjyotchhabda@gmail.com>', // sender address
+        to: "flossymascarenhas@gmail.com",          // list of receivers
+        subject: 'Hello From BookMyBook', // Subject line
+        text: 'PLease get back to me ZZZZZZZZZZZZZZ', // plain text body
         html: '<b>Hello world ?</b>' // html body
     };
 
@@ -209,6 +202,7 @@ app.get('/sendEmail',function(req,res){
             return console.log(error);
         }
         console.log('Message %s sent: %s', info.messageId, info.response);
+        console.sent('success');
 });
 });
 
@@ -221,13 +215,14 @@ app.get('/sentText',function(req,res){
     var phoneNum= req.query.ph;
     var body = req.query.textBody;
     client.messages.create({
-        to: phoneNum,
+        to: "+15597222508",
         from: "+16789229254",
-        body: body
+        body: "I am interested in this copy, please get back to me at JJ@JJ.com"
     }, function(err, message) {
         if(err){
             console.log(err);
         } else {
+            console.log('sendtext');
             console.log(message.sid);
         }
     });
@@ -273,11 +268,13 @@ app.get('/latest3',function(req,res){
     FROM Test_Most_Recent
     WHERE Date in ( SELECT MAX(Date) from Test_Most_Recent group by User)*/
 
-    var query ="SELECT bookname,author,price,email,publisher,ISBN,imageUrl,description,timestamp from upload where timestamp in (SELECT MAX(timestamp) from upload group by bookname";
+    console.log('selecting the latest 3')
+    var query ="SELECT * from upload";
 
     connection.query(query,function(err,rows,field){
 
         if(!err){
+            console.log(rows);
             res.send(rows);
         }else{
             console.log(err.stack);

@@ -2,17 +2,22 @@
 $(document).ready(function(){
 
 
-    $("#srchBtn").click(function(){
-      alert("ddddddddddd");
+
+    $("#srchBtn").click(function(e){
+      e.preventDefault();
      var textValue = document.getElementById('uniqueBook').value;
-     alert(textValue);
+
      var updateInfo ="";
 
-     $.get('/searchDatabase',{searchText:textValue},function(response){
-      alert(response);
-     	for (var i = 0; i < response.items.length; i++) {
-                var item = response.items[i];
-                 updateInfo=updateInfo+"<div class='media'><div class='media-left media-middle'><a href='#''><img class='media-object' src="+item.imagUrl+"/></a></div><div class='media-body'><h4 class='media-heading'>"+item.bookname+"</h4><h6 class='media-subheading'>by:"+item.author+" </h6><a href='#'>Email</a> <span class='bar'>|</span> <a href='#>Text</a></div></div>";
+     /*$.get('/searchDatabase',{searchText:textValue},function(data){
+         alert(data);
+     })*/
+     $.get('/searchDatabase',{searchText:textValue},function(data){
+         console.log(data[i]);
+   // alert(data);
+     	for (var i = 0; i <data.length; i++) {
+
+                 updateInfo=updateInfo+"<div class='media'><div class='media-left media-middle'><a href='#''><img class='media-object' src="+data[i].imagUrl+"/></a></div><div class='media-body'><h4 class='media-heading'>"+data[i].bookname+"</h4><h6 class='media-subheading'>by:"+data[i].author+" </h6><a href='#' onclick='sendEmail()'>Email</a> <span class='bar'>|</span> <a href='#' onclick=sendText()>Text</a></div></div>";
 
             }
        
@@ -22,6 +27,27 @@ $(document).ready(function(){
 
      });
 
+    //send text
+
  
     });
-	
+
+function sendText(){
+    $.get('/sentText',function(data){
+        if(data=='success'){
+            alert('Text Sent');
+        }else{
+            alert('Please try again in sometime');
+        }
+    })
+}
+
+function sendEmail(){
+    $.get('/sendEmail',function(data){
+        if(data == 'success'){
+            alert('Mail Sent');
+        }else{
+            alert('Please try again in sometime')
+        }
+    })
+}
