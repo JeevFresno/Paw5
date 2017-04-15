@@ -135,11 +135,6 @@ h1, h2, h3, h4, h5, h6 {
 .carousel-control.right{
     right:-15%;
 }
-.carousel-inner .thumbnail img:hover {
-    /*-moz-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);*/
-}
 .col-item .info {
     padding: 10px 15px;
     border-radius: 0 0 5px 5px;
