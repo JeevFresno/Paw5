@@ -236,13 +236,16 @@ app.get('/sentText',function(req,res){
 //fetching the profile information
 app.get('/profile',function(req,res){
     var email = req.query.email;
-
+    console.log(email);
     var query="SELECT * from user where email = ?";
-    connection.query(query,[email],function(rows,fields,err){
+    connection.query(query,[email],function(err,rows,fields){
         if(!err){
+            console.log('finally fetched');
+            console.log(rows);
             res.send(rows);
         }else{
             console.log('err');
+            console.log(err.stack);
         }
     });
 });
@@ -255,6 +258,7 @@ app.get('/getUploadedBooksByEmail',function(req,res){
     var query = "SELECT * from upload where email = ?";
     connection.query(query,[email],function(rows,fields,err){
         if(!err){
+            console.log('success');
             res.send(rows);
         }else{
             console.log('err');

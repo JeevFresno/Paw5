@@ -2,7 +2,7 @@ $(document ).ready(function() {
 
    $("#btnLogin" ).click(function(e) {
        e.preventDefault();
-       alert('Login Function')
+       //alert('Login Function')
    	var userLogin ={};
    userLogin.email= $("#emailLogin").val();
    userLogin.pwd = $("#pwdLogin").val();
@@ -13,7 +13,7 @@ $(document ).ready(function() {
    	if(data !=null){
    	    //alert('login Successful');
    	    //window.location='/';
-        alert(data);
+        //alert(data);
         sessionStorage.setItem('email',data);
         window.location='/';
 
