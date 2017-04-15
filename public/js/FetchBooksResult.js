@@ -20,4 +20,10 @@ $(document).ready(function(){
         })
     });
 
+    $('#searchDB').click(function(e){
+        e.preventDefault();
+        $.get('/searchDatabase',function(data){
+            console.log(data);
+        })
+    });
 })

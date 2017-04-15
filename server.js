@@ -33,7 +33,7 @@ connection.query('select * from test',function(err,rows,field){
         console.log(err);
     }
 })
-connection.end();
+//connection.end();
 
 var app = express();
 console.log(__dirname);
@@ -135,6 +135,33 @@ app.get('/uploadBooks',function(req,res){
             res.send('error');
         }
     })
+});
+
+/*
+ +++++++++++++++++ Searching from the Database and displaying the proper result ++++++++++++++++++
+ */
+
+app.get('/searchDatabase',function(req,res){
+    console.log('i am here');
+    //var searchText = req.query.searchText;
+    searchText='database';
+    var query1="Select * from upload where MATCH(bookname,description) AGAINST ('"+ searchText+"' IN NATURAL LANGUAGE MODE)"
+    connection.query(query1,function(err,rows,field){
+        if(!err){
+
+            console.log(rows);
+            if(rows.length==0){
+                var query2 ="";
+                connection.query(query2,function(err,rows,field){
+
+                });
+            }
+            res.send(rows);
+        }else{
+            console.log(err.stack);
+        }
+    })
+
 });
 var port = process.env.PORT || 3000;
 var server = app.listen(port,function(req,res){
