@@ -1,11 +1,15 @@
 body {
-    font-family: 'Sansita',sans-serif, Helvetica, Arial;
+    font-family: Helvetica, Arial;
     color:#000;
     font-size:12px;
     font-size:1.2rem;
 }
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Fjalla One', sans-serif, Helvetica, Arial;
+   /* font-family: 'Fjalla One', sans-serif, Helvetica, Arial;*/
+   font-family: 'Sansita',sans-serif, Helvetica, Arial;
+}
+a:active, a:focus, a:hover {
+    outline:none;
 }
 /* Heading */
 .primary-heading {
@@ -81,10 +85,15 @@ h1, h2, h3, h4, h5, h6 {
 .main-nav li a {
     color:#fff;
 }
+.main-nav li a:hover, .main-nav li a:focus {
+    background-color: #fff;
+    color: #005685;
+}
 .fixed {
     position: fixed;
     top:0;
     z-index: 2;
+    opacity: 1;
 }
 /* Parallax */
 .parallax {
@@ -206,6 +215,9 @@ h1, h2, h3, h4, h5, h6 {
 .sp_tp_50 {
     margin-top: 50px;
 }
+.sp_tp_15 {
+    margin-top: 15px;
+}
 .sp_bt_25 {
     margin-bottom: 25px;
 }
@@ -277,6 +289,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: transparent;
     cursor: pointer;
     margin-top: 15px;
+    display: inline-block;
 }
 .button-dkblue {
     color: #005685;
@@ -316,13 +329,21 @@ h1, h2, h3, h4, h5, h6 {
 .bar {
     color:#ccc;
 }
+.footer {
+    padding: 10px 0;
+    background-color: #4c4c4c;
+}
+.footer p {
+    color:#fff;
+    margin-bottom: 0;
+}
 /* Media Queries */
 @media (min-width: 992px) {
     .container {
         width: 970px;
     }
     .custom-width {
-        width:700px;
+        width:800px;
     }
 }
 
