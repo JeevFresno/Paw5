@@ -2,16 +2,18 @@ $( document ).ready(function() {
     console.log( "ready 123!" );
 
 
-$( "#btnSubmit" ).click(function() {
+$( "#btnReg" ).click(function() {
+  alert("jhgyhg");
+  console.log($("#fname").val());
    var user ={};
-user.fn = $('#fname').val();
+user.fn = $("#fname").val();
 user.ln = $('#lname').val();
-user.em = $('#email').val();
+user.em = $('#emailReg').val();
 user.pass= $('#radio:checked').val();
 user.major = $('#major').val();
 user.EndUser =$('#minor').val();
 });
-console.log($('#txtFirstName').val());
+
 });
 
 
