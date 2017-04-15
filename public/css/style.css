@@ -235,6 +235,12 @@ h1, h2, h3, h4, h5, h6 {
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
+.form-custom input[type=checkbox] {
+    border:none;
+    height:auto;
+    box-shadow: none;
+    width:auto;
+}
 .custom-border {
     border: 1px solid #ccc;
     box-shadow: 1px 5px 5px rgba(0,0,0,.075);
@@ -255,12 +261,15 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
     margin-top: 15px;
 }
+.left-content {
+    border-right: 1px solid #ccc;
+}
 .button-blue:hover {
     color: #93c4ea;
     text-decoration: none;
 }
 .button-default {
-    
+
 }
 /* Media Queries */
 @media (min-width: 992px) {
